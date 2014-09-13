@@ -133,12 +133,12 @@ class KnightsTour(object):
 
     # Warnsdorff's Rule: (Heuristic)
     # Explore first the move with fewest next moves
-    nodes = [node for node in self.graph[start] if node not in path]
-    for node in sorted(nodes, key=lambda x: len(self.graph[x])):
+    next_moves = [move for move in self.graph[start] if move not in path]
+    for move in sorted(next_moves, key=lambda x: len(self.graph[x])):
       # Only add nodes not currently in the path list
       # since we only want each square to appear once
-      if node not in path:
-        newpath = self._findPath(node, path)
+      if move not in path:
+        newpath = self._findPath(move, path)
         if newpath:
           return newpath
 
@@ -153,8 +153,8 @@ class KnightsTour(object):
 
     print('+')
 
-  def printTour(self, path):
-    order = { square : path.index(square) + 1 for square in path }
+  def printTour(self, tour):
+    order = { square : tour.index(square) + 1 for square in tour }
     width = len(str(self.size**2)) + 2 # Width of each square printed
 
     for n in range(1, self.size**2 + 1):
