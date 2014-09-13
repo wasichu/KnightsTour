@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-from pprint import pprint
-
 class KnightsTour(object):
   '''
   The Knight's Tour is a puzzle consisting of
@@ -155,7 +153,7 @@ class KnightsTour(object):
 
     print('+')
 
-  def printPath(self, path):
+  def printTour(self, path):
     order = { square : path.index(square) + 1 for square in path }
     width = len(str(self.size**2)) + 2 # Width of each square printed
 
@@ -173,4 +171,4 @@ class KnightsTour(object):
 if __name__ == '__main__':
   kt = KnightsTour()
   tour = kt.findTour()
-  kt.printPath(tour)
+  kt.printTour(tour)
