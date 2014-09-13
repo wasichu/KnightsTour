@@ -29,6 +29,10 @@ class KnightsTour(object):
   (0,1) == b8
       ...
   (7,7) == h1
+
+  Where a8, b8, etc. are standard chess board positions.
+  This scheme applies in the same way to any other size
+  board.
   '''
   def __init__(self, start=(0,0), size=8):
     '''
@@ -70,18 +74,18 @@ class KnightsTour(object):
     x, y = square
   
     # Left two up one; left two down one
-    left_two = [(x - 2, y - 1), (x - 2, y + 1)] 
+    left_twos = [(x - 2, y - 1), (x - 2, y + 1)] 
 
     # Right two up one; right two down one
-    right_two = [(x + 2, y - 1), (x + 2, y + 1)]
+    right_twos = [(x + 2, y - 1), (x + 2, y + 1)]
 
     # Up two left one; up two right one
-    up_two = [(x - 1, y - 2), (x + 1, y - 2)]
+    up_twos = [(x - 1, y - 2), (x + 1, y - 2)]
 
     # Down two left one; down two right one
-    down_two = [(x - 1, y + 2), (x + 1, y + 2)]
+    down_twos = [(x - 1, y + 2), (x + 1, y + 2)]
 
-    all_moves = left_two + right_two + up_two + down_two
+    all_moves = left_twos + right_twos + up_twos + down_twos
     return [move for move in all_moves if self.valid(move)]
 
   def valid(self, square):
